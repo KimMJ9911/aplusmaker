@@ -1,0 +1,144 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #d2dde7;
+  margin: 0;
+  padding: 0;
+}
+
+.Image {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #24388f;
+  font-weight: 500;
+}
+.delete-comment {
+  margin-top: 5px;
+  padding: 2px 6px;
+  font-size: 12px;
+  background-color: #eeeeee08;
+  border: none;
+  cursor: pointer;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(to bottom, #f2f6fc, #edf2f7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.welcome-message {
+  font-family: "DM Sans", Helvetica;
+  font-weight: 400;
+  color: #24388f;
+  font-size: 16px;
+}
+
+.left_button a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #24388f;
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-right span {
+  color: #24388f;
+  font-weight: 500;
+}
+
+.welcome {
+  font-size: 14px;
+}
+
+.post-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.post-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 700px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.user-icon {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.post-date {
+  font-size: 12px;
+  color: gray;
+}
+
+.post-content {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.interactions {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.comments {
+  background-color: #f1f5f9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.comment {
+  margin-bottom: 10px;
+}
+
+.back-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

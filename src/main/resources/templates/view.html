@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게시물 보기</title>
+  <link rel="stylesheet" th:href="@{/css/View.css}" />
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <img
+            src="https://c.animaapp.com/madj7c2qF5w5OD/img/image-3.png"
+            alt="Logo"
+            class="Image"
+    />
+    <nav class="left_button">
+      <a th:href="@{/}">홈</a>
+      <a th:href="@{/exam}">질문하기</a>
+      <a th:href="@{/posts}">게시판</a>
+      <a th:href="@{/mypage}">마이페이지</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <p class="welcome-message" th:text="${user.nickname} + '님 환영합니다!'">닉네임 환영</p>
+    <a th:href="@{/logout}">로그아웃</a>
+  </div>
+</header>
+
+<main class="post-container">
+  <div class="post-card">
+
+    <!-- 작성자 & 날짜 -->
+    <div class="post-header">
+      <div>
+        <p class="username" th:text="${postContent.authorNickname}">작성자</p>
+        <p class="post-date" th:text="${#temporals.format(postContent.createdAt, 'yyyy년 MM월 dd일 HH:mm 작성')}">
+          작성일자
+        </p>
+      </div>
+    </div>
+
+    <!-- 게시물 본문 -->
+    <div class="post-content">
+      <h2 th:text="${'[' + postContent.subjectName + '] ' + postContent.keywords}">제목</h2>
+      <p th:text="${postContent.questionText}">질문 내용</p>
+      <hr />
+      <p th:text="${postContent.answerText}">답변 내용</p>
+    </div>
+
+    <!-- 좋아요/댓글 -->
+    <div class="interactions">
+      <form th:action="@{/posts/{id}/like(id=${postContent.articleId})}" method="post">
+        <button type="submit" class="like-button">
+          <span th:if="${likedByMe}">❤️</span>
+          <span th:unless="${likedByMe}">🤍</span>
+          <span th:text="${likeCount}">0</span>
+        </button>
+      </form>
+
+      <span>💬 <span th:text="${postContent.commentCount}">0</span></span>
+
+      <!-- 댓글 입력 -->
+      <form th:action="@{/posts/{id}/comments(id=${postContent.articleId})}" method="post">
+        <input
+                type="text"
+                name="content"
+                class="comment-input"
+                placeholder="댓글을 입력해주세요."
+                required
+        />
+        <button type="submit">등록</button>
+      </form>
+    </div>
+
+    <!-- 댓글 목록 -->
+    <div class="comments">
+      <div class="comment" th:each="c : ${comments}">
+        <p><strong th:text="${c.user.nickname}">작성자</strong>
+          <span th:text="${#temporals.format(c.createdAt, 'MM/dd HH:mm')}">날짜</span>
+        </p>
+        <p th:text="${c.content}">댓글 내용</p>
+      </div>
+    </div>
+
+    <!-- 뒤로가기 -->
+    <button class="back-button" onclick="window.location.href='/posts'">목록으로</button>
+    <div class="action-buttons" th:if="${postContent.authorId == user.id}">
+      <form th:action="@{/posts/{id}/delete(id=${postContent.articleId})}" method="post">
+        <button type="submit" class="btn-delete">삭제하기</button>
+      </form>
+      <a th:href="@{/posts/{id}/edit(id=${postContent.articleId})}">
+        <button type="button" class="btn-edit">수정하기</button>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<script th:src="@{/js/View.js}"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 문제 추천</title>
+    <link rel="stylesheet" href="/css/ai-rec.css" />
+    <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@500&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<header class="main-header">
+    <img src="https://c.animaapp.com/madj7c2qF5w5OD/img/image-3.png" alt="Logo" class="logo" />
+    <nav class="main-nav">
+        <ul>
+            <li><a href="/" class="nav-button">홈</a></li>
+            <li><a href="/exam" class="nav-button">질문하기</a></li>
+            <li><a href="/posts" class="nav-button">게시판</a></li>
+            <li><a href="/mypage" class="nav-button">마이페이지</a></li>
+        </ul>
+    </nav>
+    <div class="user-actions">
+        <p class="welcome-message" th:text="${user.nickname} + '님 환영합니다!'">환영합니다!</p>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-button">로그아웃</button>
+        </form>
+    </div>
+</header>
+
+<div class="content-below-header">
+    <nav class="sidebar">
+        <ul class="nav-list">
+            <li th:each="record : ${history}" class="nav-item">
+                <a th:href="@{/exam/view/{id}(id=${record.id})}"
+                   th:text="${record.subject} + ' / ' + ${record.keyword} + ' [' + ${record.recordTypeName} + ']'"
+                   class="nav-link">기록 제목</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-area-with-footer">
+        <div class="qa-content-wrapper">
+            <div class="right-content-wrapper">
+                <div class="content-area">
+                    <section class="question-section" th:if="${problems != null}">
+                        <h2 class="section-title" th:text="${group.subject} + ' / ' + ${group.keyword}">문제 목록</h2>
+                        <div th:each="problem : ${problems}" class="question">
+                            <p th:text="${problem.questionText}">문제 텍스트</p>
+                        </div>
+                    </section>
+                    <section class="answer-section" th:if="${problems != null}">
+                        <div th:each="problem : ${problems}" class="answer">
+                            <h3>정답</h3>
+                            <p th:text="${problem.answerText}">정답 텍스트</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <section class="search-section">
+            <div class="search-header-row">
+                <div class="search-controls">
+                    <form class="search-form" th:action="@{/exam}" method="post">
+                        <div class="question-count-dropdown">
+                            <select name="count">
+                                <option value="">문제수를 선택하세요.</option>
+                                <option value="1">1 문제</option>
+                                <option value="2">2 문제</option>
+                                <option value="3">3 문제</option>
+                                <option value="4">4 문제</option>
+                                <option value="5">5 문제</option>
+                            </select>
+                        </div>
+                        <div class="question-types">
+                            <select name="type">
+                                <option value="0">주관식</option>
+                                <option value="1">객관식</option>
+                                <option value="2">단답형</option>
+                                <option value="3">O/X</option>
+                                <option value="4">서술형</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="subject" placeholder="과목을 입력하세요." required />
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="keyword" placeholder="키워드를 입력하세요." required />
+                            <button type="submit" class="search-button">
+                                <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="action-buttons">
+                    <form th:if="${group != null}" th:action="@{/exam/to-post/{id}(id=${group.id})}" method="post">
+                        <button type="submit" class="action-button">게시판 등록</button>
+                    </form>
+                    <form th:if="${group != null}" th:action="@{/exam/delete/{id}(id=${group.id})}" method="post">
+                        <button type="submit" class="action-button">질문 삭제하기</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="/js/ai-rec.js"></script>
+</body>
+</html>

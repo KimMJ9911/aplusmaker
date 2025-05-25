@@ -1,0 +1,421 @@
+/* Global Resets and Basic Styling */
+html, body {
+  height: 100vh; /* 전체 뷰포트 높이 사용 */
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  overflow: hidden; /* 전체 페이지 스크롤 방지 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styling */
+.main-header {
+  height: 10vh; /* GNB 높이: 10% */
+  flex-shrink: 0; /* 높이 고정 */
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-image: url(https://c.animaapp.com/madj7c2qF5w5OD/img/rectangle-1069.svg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10; /* 다른 요소 위에 오도록 */
+}
+
+.main-header .logo {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.main-header .main-nav {
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.main-header .main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.main-header .nav-button {
+  font-family: "DM Sans", Helvetica;
+  font-weight: 700;
+  color: #24388f;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.main-header .user-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.main-header .user-actions .welcome-message {
+  font-size: 14px;
+  color: #333;
+}
+
+.main-header .user-actions .logout-button {
+  padding: 8px 15px;
+  background-color: #24388f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Wrapper for content below header */
+.content-below-header {
+  flex: 1; /* GNB 제외한 나머지 모든 세로 공간 차지 */
+  display: flex;
+  flex-direction: row; /* Sidebar and main content side-by-side */
+  overflow: hidden; /* 내부 스크롤은 각 컴포넌트에서 */
+  width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px; /* 사이드바 너비 */
+  flex-shrink: 0; /* 너비 고정 */
+  height: 100%; /* .content-below-header의 전체 높이 차지 */
+  background-image: url(https://c.animaapp.com/madj7c2qF5w5OD/img/rectangle-609.svg);
+  background-size: cover;
+  background-position: center;
+  padding: 20px 15px;
+  overflow-y: auto; /* 사이드바 내용 많을 시 스크롤 */
+  box-sizing: border-box;
+  border-right: 1px solid #e0e0e0;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  display: block;
+  padding: 10px 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px #00000020;
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: #324054;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-item.active .nav-link,
+.nav-link:hover {
+  background-color: #24388f;
+  color: #fbfcfc;
+}
+
+/* Wrapper for main area (Q/A) and footer */
+.main-area-with-footer {
+  flex: 1; /* 사이드바 제외한 나머지 가로 공간 차지 */
+  display: flex;
+  flex-direction: column; /* Q/A content and footer stacked vertically */
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Wrapper for Q/A content specifically */
+.qa-content-wrapper {
+  flex: 1; /* 푸터 제외한 나머지 세로 공간 차지 */
+  display: flex; /* To make .right-content-wrapper fill it */
+  overflow: hidden;
+  background-color: #f4f7f9; /* Background for the Q/A wrapper area */
+}
+
+/* Right Content Wrapper (holds .content-area) */
+.right-content-wrapper {
+  flex: 1; /* qa-content-wrapper를 채움 */
+  display: flex;
+  flex-direction: column; /* .content-area를 채우기 위함 */
+  overflow: hidden; /* 내부 스크롤은 .content-area의 자식들에서 */
+  box-sizing: border-box;
+  /* padding: 25px; /* 패딩은 content-area로 이동 또는 유지 */
+}
+
+/* Content Area (Holds Question and Answer Sections) */
+.content-area {
+  flex: 1; /* .right-content-wrapper 내에서 사용 가능한 공간을 채움 */
+  display: flex;
+  flex-direction: row; /* Question and Answer side by side */
+  overflow: hidden;
+  padding: 25px;
+  gap: 25px;
+  box-sizing: border-box;
+}
+
+/* Question and Answer Section Styling */
+.question-section,
+.answer-section {
+  flex: 1;
+  height: 100%; /* .content-area 높이 채움 */
+  overflow-y: auto; /* 내부 스크롤 활성화 */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+.section-title {
+  font-family: "Open Sans", Helvetica;
+  font-weight: 700;
+  color: #324054;
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.question p,
+.answer p {
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+.question ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.question li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333333;
+}
+
+.answer-section .answer {
+  margin-bottom: 20px;
+  background-color: #edf2f7;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.answer-section .answer:hover {
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.answer-section .answer:last-child {
+  margin-bottom: 0;
+}
+
+.answer h3 {
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #24388f;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+/* Footer (.search-section) Styling */
+.search-section {
+  height: 20vh; /* 푸터 높이: 20% */
+  flex-shrink: 0; /* 높이 고정 */
+  padding: 20px 30px;
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #cccccc;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto; /* 푸터 내용 많을 시 스크롤 */
+  z-index: 5; /* 사이드바보다 낮거나 비슷하게 설정 (필요시) */
+}
+
+.search-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.question-count-dropdown select {
+  padding: 10px 20px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  background-color: #24388f;
+  border: none;
+  border-radius: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.362%22%20height%3D%22292.362%22%20viewBox%3D%220%200%20292.362%20292.362%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287.037%2089.092L146.181%20230.204%205.324%2089.092C-2.938%2080.83-2.938%2067.696%205.324%2059.435s21.383-8.261%2029.645%200L146.181%20192.052l111.213-132.617c8.261-8.261%2021.383-8.261%2029.645%200s8.261%2021.383%200%2029.644z%22/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px auto;
+  padding-right: 35px;
+  cursor: pointer;
+}
+
+.search-form {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.input-group {
+  flex: 1;
+  position: relative;
+  min-width: 150px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 20px;
+  padding-right: 40px;
+  font-family: "Open Sans", Helvetica;
+  font-size: 15px;
+  color: #324054;
+  background-color: #edf2f7;
+  border: 1px solid #d1d9e6;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #24388f;
+  box-shadow: 0 0 0 2px rgba(36, 56, 143, 0.2);
+}
+
+.search-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  fill: #5A6ACF;
+}
+
+.question-types {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.question-type-button {
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.question-type-button:not(.active) {
+  color: #324054;
+  background-color: #edf2f7;
+  border-color: #d1d9e6;
+}
+
+.question-type-button:not(.active):hover {
+  background-color: #dce4ec;
+}
+
+.question-type-button.active {
+  background-color: #24388f;
+  color: #ffffff;
+  border-color: #24388f;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.action-button {
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #24388f;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid #24388f;
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.action-button:hover {
+  background-color: #24388f;
+  color: #ffffff;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

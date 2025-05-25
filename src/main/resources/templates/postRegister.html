@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게시글 등록</title>
+  <link rel="stylesheet" th:href="@{/css/postRegister.css}" />
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <img
+            src="https://c.animaapp.com/madj7c2qF5w5OD/img/image-3.png"
+            alt="Logo"
+            class="Image"
+    />
+    <nav class="left_button">
+      <a th:href="@{/}">홈</a>
+      <a th:href="@{/exam}">질문하기</a>
+      <a th:href="@{/posts}">게시판</a>
+      <a th:href="@{/mypage}">마이페이지</a>
+    </nav>
+  </div>
+  <div class="header-right">
+    <p class="welcome-message" th:text="${user.nickname} + '님 환영합니다!'">닉네임 환영</p>
+    <a th:href="@{/logout}">로그아웃</a>
+  </div>
+</header>
+
+<div class="container">
+  <h2 th:text="${editMode} ? '게시글 수정하기' : '게시글 작성하기'">게시글 작성하기</h2>
+
+  <form th:action="${editMode} ? '/posts/' + ${article.id} + '/edit' : '/posts/new'" method="post">
+    <div class="row">
+      <input type="text" name="subjectName"
+             th:value="${article != null} ? ${article.subjectName} : ''"
+             placeholder="과목을 입력하세요." class="input half" required />
+      <input type="text" name="keywords"
+             th:value="${article != null} ? ${article.keywords} : ''"
+             placeholder="카테고리를 입력하세요." class="input half" required />
+    </div>
+
+    <label>문제</label>
+    <textarea name="questionText" class="textarea" required
+              th:text="${article != null} ? ${article.questionText} : ''"></textarea>
+
+    <label>해설</label>
+    <textarea name="answerText" class="textarea" required
+              th:text="${article != null} ? ${article.answerText} : ''"></textarea>
+
+    <div class="buttons">
+      <button type="button" class="cancel" onclick="window.history.back()">✕ 취소</button>
+      <button type="submit" class="submit" th:text="${editMode} ? '수정 완료' : '등록하기'">등록하기</button>
+    </div>
+  </form>
+
+  <script th:src="@{/js/postRegister.js}"></script>
+</div>
+</body>
+</html>
