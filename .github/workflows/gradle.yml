@@ -21,7 +21,7 @@ jobs:
       mysql:
         image: mysql:8
         ports:
-          - 3306:3306
+          - 3305:3306
         env:
           MYSQL_ROOT_PASSWORD: 59861840
           MYSQL_DATABASE: aplusmaker
