@@ -5,6 +5,10 @@
 </head>
 <body>
 <h2>Login</h2>
+<!-- 로그인 실패 시 메시지 -->
+<div th:if="${param.error}">
+    <p style="color:red;">로그인에 실패했습니다. 아이디 또는 비밀번호를 확인하세요.</p>
+</div>
 <form th:action="@{/login}" method="post">
     <input type="text" name="username" placeholder="Username" />
     <input type="password" name="password" placeholder="Password" />

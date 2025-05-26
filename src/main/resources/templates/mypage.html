@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="mypage">
+    <div class="div">
+
+        <h2 class="span-wrapper"><span class="span">개인정보 수정</span></h2>
+
+        <!-- 개인정보 수정 폼 -->
+        <form th:action="@{/mypage}" th:object="${profile}" method="post">
+            <div class="text-wrapper-4">닉네임</div>
+            <div class="single-input-field">
+                <input type="text" th:field="*{nickname}" class="text-wrapper-5" placeholder="닉네임"/>
+            </div>
+            <div class="text-wrapper-6">성/이름</div>
+            <div class="single-input-field-2">
+                <input type="text" th:field="*{name}" class="text-wrapper-5" placeholder="이름"/>
+            </div>
+            <div class="text-wrapper-7">전화번호</div>
+            <div class="single-input-field-3">
+                <input type="text" th:field="*{phone}" class="text-wrapper-5" placeholder="전화번호"/>
+            </div>
+            <div class="email">EMAIL</div>
+            <div class="single-input-field-4">
+                <input type="email" th:field="*{email}" class="text-wrapper-5" placeholder="이메일"/>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="label-wrapper">
+                    <div class="label-3">업데이트</div>
+                </button>
+            </div>
+        </form>
+        <!-- 개인정보 수정 결과 메시지 -->
+        <div th:if="${success}" th:text="${success}" style="color:green; margin:10px 0;"></div>
+
+        <hr style="margin:30px 0;">
+
+        <h2 class="group"><span class="text-wrapper-8">비밀번호 수정</span></h2>
+        <!-- 비밀번호 변경 폼 -->
+        <form th:action="@{/mypage/password}" th:object="${passwordChangeDto}" method="post">
+            <div class="single-input-field-5">
+                <input type="password" th:field="*{currentPassword}" class="text-wrapper-5" placeholder="기존 비밀번호"/>
+            </div>
+            <div class="single-input-field-6">
+                <input type="password" th:field="*{newPassword}" class="text-wrapper-5" placeholder="새로운 비밀번호"/>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="label-wrapper">
+                    <div class="label-3">비밀번호 변경</div>
+                </button>
+            </div>
+        </form>
+        <!-- 비밀번호 변경 결과 메시지 -->
+        <div th:if="${pwSuccess}" th:text="${pwSuccess}" style="color:green; margin:10px 0;"></div>
+        <div th:if="${pwError}" th:text="${pwError}" style="color:red; margin:10px 0;"></div>
+
+    </div>
+</div>
+</body>
+</html>

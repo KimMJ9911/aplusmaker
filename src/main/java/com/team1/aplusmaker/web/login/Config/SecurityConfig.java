@@ -24,7 +24,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login" , "/register" , "/css/**" , "/swagger-ui.html" , "/js/**").permitAll()
+                        .requestMatchers("/login" , "/register" , "/css/**" , "/swagger-ui.html" , "/js/**" , "/").permitAll()
                         .anyRequest().authenticated()  // 모든 요청을 허용
                 )
                 .formLogin(form -> form

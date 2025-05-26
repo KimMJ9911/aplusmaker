@@ -1,0 +1,471 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.mypage {
+    padding-top: 10vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.mypage-content {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    overflow: visible; 
+    width: 100%;
+    position: relative;
+    height: auto; 
+    min-height: 100vh; 
+}
+
+.mypage-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    justify-content: flex-start;
+    background-image: url('https://c.animaapp.com/madky1qn8i5Mw9/img/rectangle-1069.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.mypage-header-bg {
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.mypage-header-button {
+    all: unset;
+    box-sizing: border-box;
+    width: auto;
+    height: 75%;
+    padding: 10px 0;
+    border-radius: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mypage-header-logout {
+    all: unset;
+    box-sizing: border-box;
+    height: auto;
+    padding: 8px 15px;
+    background-color: #24388f;
+    color: white !important;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "DM Sans", Helvetica;
+    font-weight: 500;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+    .mypage-header-logout > span {
+        color: white !important;
+        font-family: "DM Sans", Helvetica;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+.mypage-header-logout:hover {
+    background-color: #1a2a6c; 
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+
+.mypage-header-welcome {
+    position: absolute;
+    top: 52%;
+    height: auto;
+    right: 150px;
+    transform: translateY(-50%);
+    font-weight: 400;
+    color: #24388f;
+    font-family: "DM Sans", Helvetica;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.mypage-header-profile-image {
+    max-height: 50%;
+    width: auto;
+    height: auto;
+    top: 20px;
+    left: 20px;
+    object-fit: contain;
+    margin-right: 20px;
+}
+
+.mypage-header-mypage {
+    margin-left: 100px;
+    position: absolute;
+    top: 12%;
+    left: 332px;
+}
+
+.mypage-header-question {
+    margin-left: 100px;
+    position: absolute;
+    top: 12%;
+    left: 132px;
+}
+
+.mypage-header-board {
+    margin-left: 100px;
+    position: absolute;
+    top: 12%;
+    left: 232px;
+}
+
+.mypage-header-home {
+    margin_left: 100px;
+    position: absolute;
+    top: 12%;
+    left: 157px;
+}
+
+.mypage-header-button > span {
+    font-family: "DM Sans", Helvetica;
+    font-weight: 700;
+    color: #24388f;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.mypage-navigation {
+    position: fixed; 
+    top: 10vh;
+    left: 10px;
+    width: 300px; 
+    height: calc(90vh - 10vh); 
+    background-color: #ffffff;
+    padding-top: 20px; 
+    box-sizing: border-box;
+}
+.mypage-navigation-button {
+    all: unset;
+    padding: 10px;
+    margin: 12px;
+    box-sizing: border-box;
+    width: 308px;
+    height: 56px;
+    background-color: #edf2f7;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+    .mypage-navigation-button:hover > span {
+        color: white;
+    }
+
+.mypage-navigation-button.active {
+    background-color: #24388f; 
+}
+
+.mypage-navigation-button.active > span {
+    color: white;
+}
+
+.mypage-navigation-button:hover {
+    background-color: #24388f;
+}
+
+.mypage-navigation-button:hover > span {
+    color: white;
+}
+
+.mypage-navigation-button > span {
+    padding-left: 18px;
+    font-family: "DM Sans", Helvetica;
+    font-weight: 700;
+    color: #324054;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 16px;
+    white-space: nowrap;
+    }    
+
+.mypage-main {
+    position: absolute;
+    top: 3vh;
+    left: 398px;
+    width: calc(100% - 398px - 45px);
+    height: auto; 
+}
+
+.mypage-title {
+    font-family: "DM Sans", Helvetica; 
+    font-weight: 700; 
+    color: #324054;
+    font-size: 20px; 
+    letter-spacing: 0;
+    line-height: 20px; 
+    margin-bottom: 20px;
+}
+
+.mypage-section {
+    margin-bottom: 20px;
+}
+
+.mypage-label {
+    display: block;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #324054;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 12px;
+    white-space: nowrap;
+    top:10px;
+    margin-bottom: 10px;
+}
+
+.mypage-section-row {
+    display: flex;
+    gap: 40px; 
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mypage-input {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    font-family: "Poppins", Helvetica;
+    font-weight: 500;
+    color: #324054;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0 4px;
+}
+
+    .mypage-input::placeholder {
+        color: #95a1bb;
+        opacity: 1;
+    }
+
+.mypage-input-field.input-wide {
+    width: 1070px;
+}
+
+.mypage-input-field {
+    display: flex;
+    width: 500px;
+    height: 40px;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-bottom:15px;
+    background-color: #edf2f7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 4px 4px 10px #00000040;
+}
+
+    .mypage-input-field > span {
+        flex: 1;
+        font-family: "Poppins", Helvetica;
+        font-weight: 500;
+        color: #95a1bb;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: 24px;
+    }
+
+.mypage-input-search {
+    top:5px;
+    display: flex;
+    align-items: center;
+    width: 482px;
+    height: 45px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px #00000040;
+    position: relative;
+    margin-top:20px;
+    margin-bottom: 20px;
+    justify-content: flex-end;
+}
+
+.mypage-input-search-button {
+    height: 45px;
+    line-height: 45px; 
+    padding: 0 16px;
+    background-color: #24388f;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px #00000040;
+    color: white;
+    font-family: "DM Sans", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:25px;
+}
+
+.mypage-input-search-button:hover {
+    background-color: #1a2a6c; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+
+.mypage-input-search-container {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+}
+
+
+.mypage-input-search {
+    width: 530px;
+    height: 45px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px #00000040;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.mypage-input-search-field {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    font-family: "Open Sans", Helvetica;
+    font-size: 14px;
+    color: #324054;
+    flex-grow: 1;
+}
+
+
+.mypage-input-search-icon {
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    top: 14px;
+    right: 20px;
+    justify-content: right;
+    background-image: url(https://c.animaapp.com/madky1qn8i5Mw9/img/icon.svg);
+    background-size: 100% 100%;
+}
+
+.mypage-button-group {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.mypage-button {
+    all: unset;
+    box-sizing: border-box;
+    width: 150px;
+    gap: 12px;
+    padding: 16px 24px;
+    border-radius: 90px;
+    box-shadow: 4px 4px 10px #00000040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mypage-button-cancel {
+    background-color: #edf2f7;
+    margin-top: 90px;
+}
+
+.mypage-button-cancel:hover {
+    background-color: #dbe3ec; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+    .mypage-button-cancel > img {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+    }
+
+    .mypage-button-cancel > span {
+        font-weight: 700;
+        color: #324054;
+        white-space: nowrap;
+        font-family: "DM Sans", Helvetica;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 16px;
+    }
+
+
+
+.mypage-button-update {
+    background-color: #24388f;
+    margin-top: 90px;
+}
+
+.mypage-button-update:hover {
+    background-color: #1a2a6c; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+
+    .mypage-button-update > span {
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        white-space: nowrap;
+        font-family: "DM Sans", Helvetica;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 16px;
+    }
+

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" th:href="@{/my_page(global).css}">
+    <link rel="stylesheet" th:href="@{/my_page.css}">
+</head>
+<body>
+    <div class="mypage">
+        <div class="mypage-content">
+            <!-- 사이드바 -->
+            <nav class="mypage-navigation">
+                <button type="button" class="mypage-navigation-button active" id="personalInfoEditBtn">
+                    <span>개인정보 수정</span>
+                </button>
+                <button type="button" class="mypage-navigation-button" id="guideBtn">
+                    <span>이용 안내</span>
+                </button>
+                <button type="button" class="mypage-navigation-button" id="privacyPolicyBtn">
+                    <span>개인정보처리방침</span>
+                </button>
+            </nav>
+
+            <!-- 메인 콘텐츠: 개인정보 수정 -->
+            <main class="mypage-main" id="personal-info-section">
+                <h1 class="mypage-title">개인정보 수정</h1>
+                <form th:action="@{/mypage}" th:object="${userForm}" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                    <section class="mypage-section-row">
+                        <div class="input-group">
+                            <label class="mypage-label">닉네임</label>
+                            <div class="mypage-input-field">
+                                <input type="text" th:field="*{nickname}" class="mypage-input" placeholder="닉네임" />
+                            </div>
+                            <div class="error" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}"></div>
+                        </div>
+                        <div class="input-group">
+                            <label class="mypage-label">성/이름</label>
+                            <div class="mypage-input-field">
+                                <input type="text" th:field="*{name}" class="mypage-input" placeholder="홍길동" />
+                            </div>
+                            <div class="error" th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}"></div>
+                        </div>
+                    </section>
+
+                    <section class="mypage-section-row">
+                        <div class="input-group">
+                            <label class="mypage-label">전화번호</label>
+                            <div class="mypage-input-field">
+                                <input type="tel" th:field="*{phone}" class="mypage-input" placeholder="010-1234-5678" />
+                            </div>
+                            <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                        </div>
+                        <div class="input-group">
+                            <label class="mypage-label">EMAIL</label>
+                            <div class="mypage-input-field">
+                                <input type="email" th:field="*{email}" class="mypage-input" placeholder="aaa@gmail.com" />
+                            </div>
+                            <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                        </div>
+                    </section>
+
+                    <section class="mypage-section">
+                        <label class="mypage-label">비밀번호 수정</label>
+                        <div class="mypage-input-field input-wide">
+                            <input type="password" th:field="*{currentPassword}" class="mypage-input" placeholder="기존 비밀번호" />
+                        </div>
+                        <div class="mypage-input-field input-wide">
+                            <input type="password" th:field="*{newPassword}" class="mypage-input" placeholder="새로운 비밀번호" />
+                        </div>
+                    </section>
+
+                    <div class="mypage-input-search-container">
+                        <div class="mypage-input-search">
+                            <input type="text" placeholder="학교를 검색하시오." class="mypage-input-search-field" />
+                            <div class="mypage-input-search-icon"></div>
+                        </div>
+                        <button type="button" class="mypage-input-search-button">인증</button>
+                    </div>
+
+                    <div class="mypage-button-group">
+                        <button type="reset" class="mypage-button mypage-button-cancel">
+                            <img th:src="@{https://c.animaapp.com/madky1qn8i5Mw9/img/icons-close-line.svg}" alt="취소 아이콘" />
+                            <span>취소</span>
+                        </button>
+                        <button type="submit" class="mypage-button mypage-button-update">
+                            <span>업데이트</span>
+                        </button>
+                    </div>
+                </form>
+            </main>
+
+            <!-- 메인 콘텐츠: 이용 안내 -->
+            <main class="mypage-main" id="guide-section" style="display: none;">
+                <h1 class="mypage-title">이용 안내</h1>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제1조 (목적)</h2>
+                    <p>
+                        본 안내는 A+ Maker(이하 "서비스")의 이용 조건 및 절차, 이용자와 서비스 제공자 간의 권리·의무 및 책임 사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+                    </p>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제2조 (정의)</h2>
+                    <ul>
+                        <li>"이용자"란 본 약관에 따라 서비스를 이용하는 회원 또는 비회원을 말합니다.</li>
+                        <li>"회원"이란 서비스를 통해 회원가입을 완료하고, 아이디 및 비밀번호를 발급받아 지속적으로 서비스를 이용할 수 있는 자를 말합니다.</li>
+                        <li>"콘텐츠"란 이용자가 서비스 내에서 생성하거나 저장, 게시한 모든 정보를 의미합니다.</li>
+                    </ul>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제3조 (이용계약의 성립)</h2>
+                    <p>
+                        이용계약은 이용자가 본 안내에 동의하고, 서비스가 정한 절차에 따라 회원가입을 완료함으로써 성립합니다. 서비스는 이용 신청에 대해 기술적 사유가 없는 한 이를 승낙합니다.
+                    </p>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제4조 (서비스 내용)</h2>
+                    <ul>
+                        <li>AI 기반 예상문제 생성 기능 제공</li>
+                        <li>저장된 문항의 복습 기능 및 학습 로그 확인</li>
+                        <li>게시판을 통한 문항 공유, 피드백 기능</li>
+                        <li>좋아요 기반 인기 문항 확인 기능</li>
+                    </ul>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제5조 (서비스의 변경 및 중단)</h2>
+                    <p>
+                        서비스는 필요 시 운영상, 기술상의 사유로 사전 공지 없이 서비스의 내용을 변경하거나 중단할 수 있습니다. 다만, 불가피한 경우에는 사후 공지로 갈음할 수 있습니다.
+                    </p>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제6조 (이용자의 의무)</h2>
+                    <ul>
+                        <li>서비스 이용 시 관련 법령, 본 안내사항 및 서비스의 공지사항을 준수해야 합니다.</li>
+                        <li>타인의 개인정보를 도용하거나 서비스를 방해하는 행위를 해서는 안 됩니다.</li>
+                        <li>비정상적인 방식(스크래핑, 매크로 등)으로 시스템을 악용하는 경우, 계정 정지 조치를 받을 수 있습니다.</li>
+                    </ul>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제7조 (게시물의 저작권 및 관리)</h2>
+                    <p>
+                        이용자가 서비스에 등록한 게시물의 저작권은 원칙적으로 해당 작성자에게 있으며, 서비스는 이를 학습/연구 목적 범위 내에서 활용할 수 있습니다. 단, 다음의 경우 사전 통보 없이 삭제될 수 있습니다:
+                    </p>
+                    <ul>
+                        <li>타인의 권리를 침해하거나 명예를 훼손하는 경우</li>
+                        <li>공공질서 및 미풍양속을 해치는 경우</li>
+                        <li>기타 불법적인 콘텐츠로 판단되는 경우</li>
+                    </ul>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제8조 (계정의 정지 및 탈퇴)</h2>
+                    <ul>
+                        <li>이용자는 언제든지 서비스 내 '마이페이지 &gt; 계정 설정'을 통해 탈퇴를 요청할 수 있습니다.</li>
+                        <li>
+                            서비스는 다음 각 호의 사유가 발생할 경우, 사전 통지 후 계정의 이용을 제한 또는 정지할 수 있습니다:
+                            <ol>
+                                <li>본 약관 또는 관련 법령을 위반한 경우</li>
+                                <li>타인의 명의 또는 개인정보를 도용한 경우</li>
+                                <li>서비스를 악용하거나 시스템에 피해를 준 경우</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제9조 (개인정보 보호)</h2>
+                    <p>
+                        서비스는 「개인정보 보호법」 및 「정보통신망 이용촉진 및 정보보호법」을 준수하며, 개인정보는 별도의 <a th:href="@{/privacy-policy}" target="_blank">개인정보처리방침</a>에 따라 안전하게 관리됩니다.
+                    </p>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제10조 (면책조항)</h2>
+                    <p>
+                        서비스는 AI가 생성한 콘텐츠의 정확성 및 완전성을 보장하지 않으며, 학습 참고용으로만 제공됩니다. 또한, 다음 각 호에 해당하는 사유로 인한 피해에 대하여는 책임을 지지 않습니다:
+                    </p>
+                    <ul>
+                        <li>이용자의 귀책 사유로 발생한 손해</li>
+                        <li>천재지변, 불가항력적 사유로 인한 시스템 중단</li>
+                        <li>게시된 정보에 대한 이용자의 주관적 판단</li>
+                    </ul>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제11조 (고객 지원)</h2>
+                    <p>
+                        서비스 이용 중 문의사항이 있으시면 아래 연락처로 문의해 주세요.<br />
+                        이메일: <a href="mailto:support@aplusmaker.com">support@aplusmaker.com</a><br />
+                        운영 시간: 평일 오전 10:00 ~ 오후 6:00<br />
+                        카카오톡 채널: @AplusMaker
+                    </p>
+                </section>
+
+                <section class="mypage-section">
+                    <h2 class="mypage-label">제12조 (개인정보처리방침)</h2>
+                    <p>
+                        서비스는 이용자의 개인정보를 소중히 여기며, 관련 법령에 따라 다음과 같이 처리하고 있습니다.
+                    </p>
+                    <ul>
+                        <li><strong>수집 항목:</strong> 이름, 닉네임, 전화번호, 이메일, 비밀번호 등</li>
+                        <li><strong>이용 목적:</strong> 회원 관리, 맞춤형 서비스 제공, 문의 대응, 부정 이용 방지 등</li>
+                        <li><strong>보유 기간:</strong> 회원 탈퇴 시까지. 단, 법령에 의해 보존이 필요한 경우 해당 기간 동안 보관</li>
+                        <li><strong>제3자 제공:</strong> 원칙적으로 외부에 제공하지 않으며, 법령에 의한 경우 또는 이용자 동의가 있는 경우에만 제공</li>
+                        <li><strong>이용자의 권리:</strong> 개인정보 조회, 수정, 삭제, 처리 정지 요청 가능</li>
+                        <li><strong>개인정보 보호 책임자:</strong> support@aplusmaker.com</li>
+                    </ul>
+                    <p>
+                        보다 상세한 내용은 <a th:href="@{/privacy-policy}" target="_blank">개인정보처리방침</a> 페이지를 참고해 주세요.
+                    </p>
+                </section>
+            </main>
+
+            <!-- 메인 콘텐츠: 기타 -->
+            <main class="mypage-main" id="other-section" style="display: none;">
+                <h1 class="mypage-title">기타</h1>
+                <p>기타 정보를 여기에 입력하세요.</p>
+            </main>
+
+            <!-- GNB -->
+            <header class="mypage-header">
+                <button class="mypage-header-button mypage-header-logout">
+                    <span>로그아웃</span>
+                </button>
+                <div class="mypage-header-welcome">김태훈님 환영합니다!</div>
+                <img src="https://c.animaapp.com/madky1qn8i5Mw9/img/image-3.png" alt="프로필 이미지" class="mypage-header-profile-image">
+                <button class="mypage-header-button mypage-header-mypage">
+                    <span>마이페이지</span>
+                </button>
+                <button class="mypage-header-button mypage-header-question">
+                    <span>질문하기</span>
+                </button>
+                <button class="mypage-header-button mypage-header-board">
+                    <span>게시판</span>
+                </button>
+                <button class="mypage-header-button mypage-header-home">
+                    <span>홈</span>
+                </button>
+            </header>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navButtons = document.querySelectorAll('.mypage-navigation-button');
+            const sections = [
+                document.getElementById('personal-info-section'),
+                document.getElementById('guide-section'),
+                document.getElementById('other-section')
+            ];
+
+            navButtons.forEach((button, index) => {
+                button.addEventListener('click', function () {
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // 모든 섹션 숨김
+                    sections.forEach(section => section.style.display = 'none');
+
+                    // 클릭한 버튼에 해당하는 섹션만 표시
+                    sections[index].style.display = 'block';
+
+                    // 스크롤을 맨 위로 초기화
+                    document.documentElement.scrollTop = 0; // Scroll to the top of the page
+                });
+            });
+
+            // 로그아웃 버튼 토글
+            const logoutButton = document.querySelector('.mypage-header-logout');
+            logoutButton.addEventListener('click', function () {
+                logoutButton.classList.toggle('active');
+            });
+        });
+
+    </script>
+</body>
+</html>
