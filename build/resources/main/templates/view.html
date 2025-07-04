@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게시물 보기</title>
+  <link rel="stylesheet" th:href="@{/css/View.css}" />
+  <link rel="stylesheet" th:href="@{/css/gnb.css}" />
+</head>
+<body>
+<header th:replace="~{fragments/gnb :: gnbFragment}"></header>
+
+<main class="post-container">
+  <div class="post-card">
+    <!-- 게시물 헤더 -->
+    <div class="post-header">
+      <div class="user-info">
+        <p class="username" th:text="${postContent.authorNickname}">작성자</p>
+        <p class="post-date" th:text="${#temporals.format(postContent.createdAt, 'yyyy년 MM월 dd일 HH:mm 작성')}">
+          작성일자
+        </p>
+      </div>
+      
+      <!-- 작성자일 경우 수정/삭제 버튼 -->
+      <div class="action-buttons" th:if="${postContent.authorId == user.id}">
+        <a th:href="@{/posts/{id}/edit(id=${postContent.articleId})}">
+          <button type="button" class="btn-edit">수정</button>
+        </a>
+        <form th:action="@{/posts/{id}/delete(id=${postContent.articleId})}" method="post" style="display:inline;">
+          <button type="submit" class="btn-delete">삭제</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 게시물 본문 -->
+    <div class="post-content">
+      <h2 th:text="${'[' + postContent.subjectName + '] ' + postContent.keywords}">제목</h2>
+      <p th:text="${postContent.questionText}">질문 내용</p>
+      <hr />
+      <p th:text="${postContent.answerText}">답변 내용</p>
+    </div>
+
+    <!-- 좋아요/댓글 -->
+    <div class="interactions">
+      <form th:action="@{/posts/{id}/like(id=${postContent.articleId})}" method="post">
+        <button type="submit" class="like-button">
+          <span th:if="${likedByMe}">❤️</span>
+          <span th:unless="${likedByMe}">🤍</span>
+          <span th:text="${likeCount}">0</span>
+        </button>
+      </form>
+
+      <span>💬 <span th:text="${postContent.commentCount}">0</span></span>
+    </div>
+
+    <!-- 댓글 입력 -->
+    <div class="comment-input-container">
+      <form th:action="@{/posts/{id}/comments(id=${postContent.articleId})}" method="post" style="display: flex; width: 100%; gap: 10px;">
+        <input
+                type="text"
+                name="content"
+                class="comment-input"
+                placeholder="댓글을 입력해주세요."
+                required
+        />
+        <button type="submit" class="submit-button">등록</button>
+      </form>
+    </div>
+
+    <!-- 댓글 목록 -->
+    <div class="comments-section">
+      <h3 class="comments-title">댓글</h3>
+      <div class="comments">
+        <div class="comment" th:each="c : ${comments}" th:attr="data-comment-id=${c.id}">
+          <div class="comment-header">
+            <span class="comment-author" th:text="${c.user.nickname}">작성자</span>
+            <span class="comment-date" th:text="${#temporals.format(c.createdAt, 'yyyy-MM-dd HH:mm')}">날짜</span>
+          </div>
+          
+          <div class="comment-content-view" th:text="${c.content}">댓글 내용</div>
+          
+          <!-- 인라인 수정 폼 (숨김) -->
+          <form class="comment-edit-form" th:action="@{/posts/{articleId}/comments/{commentId}/edit(articleId=${postContent.articleId},commentId=${c.id})}" method="post" style="display:none;">
+            <div class="edit-form-container">
+              <textarea name="content" th:text="${c.content}" required class="comment-edit-textarea"></textarea>
+              <div class="edit-form-buttons">
+                <button type="button" class="cancel-edit">취소</button>
+                <button type="submit" class="save-edit">수정완료</button>
+              </div>
+            </div>
+          </form>
+          
+          <!-- 본인 댓글일 경우 수정/삭제 버튼 -->
+          <div class="comment-actions" th:if="${user.id == c.user.id}">
+            <button type="button" class="edit-comment">수정</button>
+            <form th:action="@{/posts/{articleId}/comments/{commentId}/delete(articleId=${postContent.articleId},commentId=${c.id})}" method="post" style="display:inline;">
+              <button type="submit" onclick="return confirm('댓글을 삭제하시겠습니까?');">삭제</button>
+            </form>
+          </div>
+        </div>
+        
+        <!-- 댓글이 없을 경우 -->
+        <div class="no-comments" th:if="${#lists.isEmpty(comments)}">
+          <p>첫 번째 댓글을 작성해보세요!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 버튼 영역 -->
+    <div class="action-buttons-container">
+      <button class="back-button" onclick="window.location.href='/posts'">목록으로</button>
+    </div>
+  </div>
+</main>
+
+<script th:src="@{/js/View.js}"></script>
+</body>
+</html>

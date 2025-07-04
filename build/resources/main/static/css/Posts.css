@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background: #d2dde7;
+  color: #333;
+}
+
+.Image {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+}
+
+/* GNB 관련 스타일은 gnb.css에서 정의됨 */
+
+main {
+  display: flex;
+  padding: 15px; /* 패딩 감소 */
+  max-width: 1400px; /* 최대 너비 증가 */
+  margin: 0 auto;
+  gap: 18px; /* 좌우 컴포넌트 간격 약간 감소 */
+}
+
+.left {
+  flex: 4; /* 게시글 목록 공간 비율 유지 */
+}
+
+.right {
+  flex: 1.8; /* 즐겨찾기 목록 공간 비율 1.5배 증가 */
+}
+
+.search-box {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background: #24388f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.write-btn {
+  padding: 10px 20px;
+  background: #28a745; /* 초록색 계열로 변경 */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post-card {
+  background: white;
+  border-radius: 6px;
+  padding: 14px 16px; /* 상하 패딩 약간 감소, 좌우 패딩 증가 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  margin-bottom: 10px;
+}
+
+.post-header h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.post-header h3 a {
+  text-decoration: none;
+  color: #333;
+}
+
+.post-header h3 a:hover {
+  color: #24388f;
+}
+
+.post-content {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.post-meta {
+  font-size: 12px;
+  color: gray;
+  display: flex;
+  gap: 15px;
+}
+
+.post-likes, .post-comments {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post-time {
+  margin-left: auto;
+}
+
+.favorites-container {
+  background: white;
+  border-radius: 6px;
+  padding: 14px 16px; /* 상하 패딩 약간 감소, 좌우 패딩 증가 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-title {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.favorites-list {
+  list-style: none;
+}
+
+.favorite-item {
+  background: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.favorite-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+.favorite-item a:hover {
+  color: #24388f;
+}
+
+.no-favorites {
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
+}
+
+.no-results {
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-btn {
+  padding: 12px 3rem;
+  font-size: 14px;
+  background: #24388f;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

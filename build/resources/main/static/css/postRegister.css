@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background: #d2dde7;
+  color: #333;
+}
+
+.Image {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+}
+
+/* GNB 관련 스타일은 gnb.css에서 정의됨 */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 60px; /* GNB 높이 고려 */
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #24388f;
+  font-size: 24px;
+}
+
+form {
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.half {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.textarea {
+  width: 100%;
+  height: 200px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+  margin-bottom: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cancel {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.submit {
+  background-color: #28a745; /* 초록색으로 변경 - posts.css의 글쓰기 버튼과 일치 */
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}

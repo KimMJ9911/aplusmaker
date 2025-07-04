@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  background: linear-gradient(to bottom, #f2f6fc, #edf2f7);
+  color: #333;
+}
+
+.Image {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+}
+
+/* nav 관련 스타일 제거 - gnb.css에서 정의됨 */
+
+/* header 관련 스타일은 gnb.css에서 정의됨 */
+
+/* main */
+.main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  text-align: left; /* 전체 왼쪽 정렬 */
+}
+
+.main h1 {
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 700;
+  color: #1e2a44;
+  text-align: left;
+}
+
+.highlight-red {
+  color: #ff3b30; /* 빨간색 텍스트로 변경 */
+  border-bottom: none; /* 밑줄 제거 */
+  padding-bottom: 0;
+}
+
+.logo_wrapper {
+  display: block;
+  width: 100%;
+  text-align: right;
+  font-size: 52px;
+}
+.main .logo-wrapper {
+  display: block;
+  text-align: right; /* A+Maker 우측 정렬 */
+}
+.main .logo-wrapper .logo-colored {
+  font-size: 84px;
+  font-weight: 800;
+  background: linear-gradient(to top, #00b3ff, #00e676);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.maker {
+  color: black !important;
+  -webkit-text-fill-color: initial !important;
+  font-weight: 800;
+}
+
+.start-button {
+  display: block;
+  margin: 40px auto 0; /* 위 여백 + 가운데 정렬 */
+  padding: 12px 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #0a4fb3;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  text-decoration: none; /* 밑줄 제거 */
+  border-bottom: none; /* 밑줄 제거 확실히 */
+}
+
+/* 시작하기 버튼 관련 모든 밑줄 효과 제거 */
+.main a, 
+.main a:hover, 
+.main button,
+.main a button {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* 버튼 링크 전용 스타일 */
+.button-link {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.reviews {
+  margin: 50px auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.review {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #eef2fb;
+}
+footer .logo-colored {
+  font-size: 28px; /* footer에서 A+Maker의 기본 크기 */
+  font-weight: 800;
+  background: linear-gradient(to top, #00b3ff, #00e676);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer_cotents {
+  margin-bottom: 20px;
+}
+
+footer p {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.5;
+  max-width: 1200px; /* 800px에서 1200px로 증가 */
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+footer p span {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+

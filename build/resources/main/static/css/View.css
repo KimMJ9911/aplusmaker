@@ -1,0 +1,315 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background: #d2dde7;
+  color: #333;
+}
+
+.Image {
+  width: 88px;
+  height: 56px;
+  object-fit: cover;
+}
+
+/* GNB 관련 스타일은 gnb.css에서 정의됨 */
+
+.post-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 15px;
+  margin-top: 60px; /* GNB 높이 고려 */
+}
+
+.post-card {
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.post-header .user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 16px;
+  color: #24388f;
+}
+
+.post-date {
+  font-size: 13px;
+  color: #666;
+  margin-top: 3px;
+}
+
+.post-content {
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.post-content h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #24388f;
+  margin-bottom: 15px;
+}
+
+.post-content p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.post-content hr {
+  margin: 20px 0;
+  border: 0;
+  height: 1px;
+  background-color: #eee;
+}
+
+.interactions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.interactions form {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.comment-input-container {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 10px;
+  width: 100%;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.interactions button {
+  padding: 8px 15px;
+  background-color: #24388f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.submit-button {
+  padding: 8px 15px;
+  background-color: #24388f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.comments-section {
+  margin-bottom: 20px;
+}
+
+.comments-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.comments {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.comment {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.comment:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #24388f;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #666;
+}
+
+.comment-content-view {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.comment-edit-form {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.comment-edit-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.edit-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cancel-edit {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #f0f0f0 !important;
+  color: #333 !important;
+}
+
+.save-edit {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #24388f;
+  color: white;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-comment {
+  background-color: #f0f0f0 !important;
+  color: #333 !important;
+}
+
+.comment-actions button {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #24388f;
+  color: white;
+}
+
+.action-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background-color: #24388f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-edit, .btn-delete {
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-edit {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.no-comments {
+  text-align: center;
+  color: #888;
+  padding: 15px;
+  font-size: 14px;
+}

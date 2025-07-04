@@ -1,0 +1,287 @@
+/* 마이페이지 스타일 */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #d2dde7; /* posts 페이지와 동일한 배경색 */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-below-header {
+  padding-top: 60px; /* GNB 높이만큼 여백 */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: calc(100% - 60px); /* GNB 높이를 제외한 나머지 전체 높이 */
+}
+
+.main-area-with-footer {
+  max-width: 1400px; /* posts 페이지와 동일한 최대 너비 */
+  margin: 0 auto;
+  padding: 15px; /* posts 페이지와 동일한 패딩 */
+  display: flex;
+  width: 100%;
+}
+
+.content-area {
+  background-color: white;
+  border-radius: 6px; /* posts 페이지와 일치하도록 조정 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* posts 페이지와 일치하도록 조정 */
+  padding: 14px 16px; /* posts 페이지와 일치하도록 조정 */
+  flex: 1;
+  width: 100%;
+}
+
+/* 섹션 공통 스타일 */
+section {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e7e9ed;
+  width: 100%;
+}
+
+section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e2a44;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  height: 16px;
+  width: 4px;
+  background-color: #24388f;
+  border-radius: 2px;
+}
+
+/* 폼 스타일 */
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 15px;
+  max-width: 80%;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e2a44;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #24388f;
+  outline: none;
+}
+
+/* 버튼 스타일 */
+.action-button {
+  background-color: #24388f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+  width: 120px;
+  justify-self: end;
+}
+
+.action-button:hover {
+  background-color: #1c2e6e;
+}
+
+/* 메시지 스타일 */
+.success-message {
+  color: #28a745;
+  font-size: 14px;
+  margin-top: 15px;
+  background-color: rgba(40, 167, 69, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  display: block;
+  width: 100%;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 15px;
+  background-color: rgba(220, 53, 69, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  display: block;
+  width: 100%;
+}
+
+/* 즐겨찾기 토글 버튼 */
+.favorites-toggle {
+  display: flex;
+  justify-content: center;
+}
+
+.favorites-toggle .action-button {
+  width: auto;
+  justify-self: center;
+  background-color: #28a745;
+}
+
+.favorites-toggle .action-button:hover {
+  background-color: #218838;
+}
+
+/* 활동 통계 대시보드 */
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 120px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+
+.question-icon {
+  background-color: #4c6ef5;
+}
+
+.post-icon {
+  background-color: #fd7e14;
+}
+
+.comment-icon {
+  background-color: #20c997;
+}
+
+.like-icon {
+  background-color: #e64980;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+/* 활동 요약 그래프 섹션 제거됨 */
+
+/* 최근 활동 타임라인 섹션 제거됨 */
+
+/* 빈 메시지 스타일 */
+.empty-message {
+  text-align: center;
+  color: #6c757d;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* 빠른 메뉴 바로가기 */
+.shortcuts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.shortcut-card {
+  flex: 1;
+  min-width: 120px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.shortcut-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.shortcut-icon {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.shortcut-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GNB Fragment</title>
+    <link rel="stylesheet" th:href="@{/css/gnb.css}" />
+</head>
+<body>
+    <!-- 전역 내비게이션 바(GNB) 프래그먼트 -->
+    <header th:fragment="gnbFragment">
+        <div class="header-left">
+            <img
+                    src="https://c.animaapp.com/madj7c2qF5w5OD/img/image-3.png"
+                    alt="Logo"
+                    class="Image"
+            />
+            <nav class="left_button">
+                <a th:href="@{/}">홈</a>
+                <a th:href="@{/exam}">질문하기</a>
+                <a th:href="@{/posts}">게시판</a>
+                <a th:href="@{/mypage}">마이페이지</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <!-- 로그인 상태일 때 -->
+            <div th:if="${user != null && ((user instanceof T(java.util.Map) && user.username != null && user.username != '게스트') || (!(user instanceof T(java.util.Map)) && user.username != null && user.username != '게스트'))}" class="user-welcome">
+                <!-- Map 객체인 경우 (HomeController에서 온 경우) -->
+                <p th:if="${user instanceof T(java.util.Map)}" class="welcome-message" th:text="${user.nickname != null ? user.nickname : user.username} + '님 환영합니다!'">닉네임 환영</p>
+                <!-- Member 객체인 경우 (다른 컨트롤러에서 온 경우) -->
+                <p th:unless="${user instanceof T(java.util.Map)}" class="welcome-message" th:text="${user.nickname != null ? user.nickname : user.username} + '님 환영합니다!'">닉네임 환영</p>
+                <a th:href="@{/logout}" class="logout-btn">로그아웃</a>
+            </div>
+            <!-- 비로그인 상태일 때 -->
+            <div th:if="${user == null || (user instanceof T(java.util.Map) && user.username == '게스트') || (!(user instanceof T(java.util.Map)) && user.username == '게스트')}" class="auth-buttons">
+                <a th:href="@{/login}" class="login-btn">로그인</a>
+                <a th:href="@{/register}" class="register-btn">회원가입</a>
+            </div>
+        </div>
+    </header>
+</body>
+</html> 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link rel="stylesheet" th:href="@{/css/mypage.css}"/>
+    <link rel="stylesheet" th:href="@{/css/gnb.css}"/>
+</head>
+<body>
+<header th:replace="~{fragments/gnb :: gnbFragment}"></header>
+
+<div class="content-below-header">
+    <div class="main-area-with-footer">
+        <div class="content-area">
+            <h1 style="margin-bottom: 25px; color: #24388f; font-size: 24px;">마이페이지</h1>
+            
+            <!-- 활동 통계 대시보드 -->
+            <section class="dashboard-section">
+                <h2 class="section-title">활동 통계</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon question-icon">Q</div>
+                        <div class="stat-info">
+                            <span class="stat-value" th:text="${stats != null ? stats.problemCount : 0}">0</span>
+                            <span class="stat-label">문제 풀이</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon post-icon">P</div>
+                        <div class="stat-info">
+                            <span class="stat-value" th:text="${stats != null ? stats.postCount : 0}">0</span>
+                            <span class="stat-label">게시글</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon comment-icon">C</div>
+                        <div class="stat-info">
+                            <span class="stat-value" th:text="${stats != null ? stats.commentCount : 0}">0</span>
+                            <span class="stat-label">댓글</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon like-icon">L</div>
+                        <div class="stat-info">
+                            <span class="stat-value" th:text="${stats != null ? stats.likeCount : 0}">0</span>
+                            <span class="stat-label">찜한 게시글</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 개인정보 수정 섹션 -->
+            <section class="profile-section">
+                <h2 class="section-title">개인정보 수정</h2>
+                <form th:action="@{/mypage}" th:object="${profile}" method="post">
+                    <div class="input-group">
+                        <label>닉네임</label>
+                        <input type="text" th:field="*{nickname}" placeholder="닉네임"/>
+                    </div>
+                    <div class="input-group">
+                        <label>성/이름</label>
+                        <input type="text" th:field="*{name}" placeholder="이름"/>
+                    </div>
+                    <div class="input-group">
+                        <label>전화번호</label>
+                        <input type="text" th:field="*{phone}" placeholder="전화번호"/>
+                    </div>
+                    <div class="input-group">
+                        <label>이메일</label>
+                        <input type="email" th:field="*{email}" placeholder="이메일"/>
+                    </div>
+                    <button type="submit" class="action-button">업데이트</button>
+                </form>
+                <div th:if="${success}" th:text="${success}" class="success-message"></div>
+            </section>
+
+            <!-- 비밀번호 수정 섹션 -->
+            <section class="password-section">
+                <h2 class="section-title">비밀번호 수정</h2>
+                <form th:action="@{/mypage/password}" th:object="${passwordChangeDto}" method="post">
+                    <div class="input-group">
+                        <label>기존 비밀번호</label>
+                        <input type="password" th:field="*{currentPassword}" placeholder="기존 비밀번호"/>
+                    </div>
+                    <div class="input-group">
+                        <label>새로운 비밀번호</label>
+                        <input type="password" th:field="*{newPassword}" placeholder="새로운 비밀번호"/>
+                    </div>
+                    <button type="submit" class="action-button">비밀번호 변경</button>
+                </form>
+                <div th:if="${pwSuccess}" th:text="${pwSuccess}" class="success-message"></div>
+                <div th:if="${pwError}" th:text="${pwError}" class="error-message"></div>
+            </section>
+
+
+            
+
+            
+
+            
+            <!-- 빠른 메뉴 바로가기 -->
+            <section class="shortcuts-section">
+                <h2 class="section-title">빠른 메뉴</h2>
+                <div class="shortcuts-container">
+                    <a href="/exam" class="shortcut-card">
+                        <div class="shortcut-icon exam-icon">📝</div>
+                        <div class="shortcut-title">문제 풀기</div>
+                    </a>
+                    <a href="/posts/new" class="shortcut-card">
+                        <div class="shortcut-icon write-icon">✏️</div>
+                        <div class="shortcut-title">글 작성하기</div>
+                    </a>
+                    <a href="/posts" class="shortcut-card">
+                        <div class="shortcut-icon board-icon">📋</div>
+                        <div class="shortcut-title">게시판</div>
+                    </a>
+                    <a href="/" class="shortcut-card">
+                        <div class="shortcut-icon home-icon">🏠</div>
+                        <div class="shortcut-title">홈으로</div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- 마이페이지는 별도 스크립트가 필요 없어 제거 -->
+</body>
+</html>

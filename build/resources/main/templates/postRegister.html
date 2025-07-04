@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게시글 등록</title>
+  <link rel="stylesheet" th:href="@{/css/postRegister.css}" />
+  <link rel="stylesheet" th:href="@{/css/gnb.css}" />
+</head>
+<body>
+<header th:replace="~{fragments/gnb :: gnbFragment}"></header>
+
+<div class="container">
+  <h2 th:text="${editMode} ? '게시글 수정하기' : '게시글 작성하기'">게시글 작성하기</h2>
+
+  <form th:action="${editMode} ? '/posts/' + ${article.id} + '/edit' : '/posts/new'" method="post">
+    <div class="row">
+      <div class="half">
+        <label for="subjectName">과목</label>
+        <input id="subjectName" type="text" name="subjectName"
+               th:value="${article != null} ? ${article.subjectName} : ''"
+               placeholder="과목을 입력하세요." class="input" required />
+      </div>
+      <div class="half">
+        <label for="keywords">카테고리</label>
+        <input id="keywords" type="text" name="keywords"
+               th:value="${article != null} ? ${article.keywords} : ''"
+               placeholder="카테고리를 입력하세요." class="input" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="questionText">문제</label>
+      <textarea id="questionText" name="questionText" class="textarea" required
+                th:text="${article != null} ? ${article.questionText} : ''"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="answerText">해설</label>
+      <textarea id="answerText" name="answerText" class="textarea" required
+                th:text="${article != null} ? ${article.answerText} : ''"></textarea>
+    </div>
+
+    <div class="buttons">
+      <button type="button" class="cancel" onclick="window.history.back()">취소</button>
+      <button type="submit" class="submit" th:text="${editMode} ? '수정 완료' : '등록하기'">등록하기</button>
+    </div>
+  </form>
+
+  <script th:src="@{/js/postRegister.js}"></script>
+</div>
+</body>
+</html>

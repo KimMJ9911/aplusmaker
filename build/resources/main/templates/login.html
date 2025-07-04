@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A+Maker 로그인</title>
+  <link rel="stylesheet" th:href="@{/css/login.css}" />
+</head>
+<body>
+<div class="login-wrapper">
+  <div class="login-box">
+    <h1 class="logo"><span class="logo-blue">A+</span><strong>Maker</strong> 로그인</h1>
+
+    <form th:action="@{/login}" method="post">
+      <input type="text" name="username" placeholder="아이디" class="input-box" />
+      <input type="password" name="password" placeholder="비밀번호" class="input-box" />
+      <button type="submit" class="login-button">로그인</button>
+    </form>
+
+    <div th:if="${param.error}" class="error-box">
+      <p>아이디 또는 비밀번호가 잘못되었습니다.</p>
+    </div>
+
+    <div th:if="${param.logout}" class="success-box">
+      <p>로그아웃 되었습니다.</p>
+    </div>
+
+    <p class="bottom-text">
+      아직 우리 서비스의 회원이 아니신가요?
+      <a th:href="@{/register}" class="signup-link">회원가입하기</a>
+    </p>
+  </div>
+</div>
+
+<script th:src="@{/js/login.js}"></script>
+</body>
+</html>

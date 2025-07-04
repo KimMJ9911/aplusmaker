@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>A+ Maker - 게시판</title>
+    <link rel="stylesheet" th:href="@{/css/posts.css}" />
+    <link rel="stylesheet" th:href="@{/css/gnb.css}" />
+</head>
+<body>
+<header th:replace="~{fragments/gnb :: gnbFragment}"></header>
+
+<main>
+    <div class="left">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="검색" />
+            <button class="search-btn">검색</button>
+            <button class="write-btn" onclick="location.href='/posts/new'">글쓰기</button>
+        </div>
+
+        <!-- 게시글 리스트 출력 -->
+        <div class="post-list" id="postList">
+            <div class="post-card" th:each="post:${postSummaries}" th:style="${postStat.index < 5 ? 'display:block' : 'display:none'}">
+                <div class="post-header">
+                    <h3>
+                        <a th:href="@{/posts/{id}(id=${post.articleId})}"
+                           th:text="'[' + ${post.subjectName} + '] ' + ${post.keywords}">게시글 제목</a>
+                    </h3>
+                </div>
+                <p class="post-content" th:text="${#strings.abbreviate(post.questionText, 100)}">내용 미리보기</p>
+                <div class="post-meta">
+                    <span class="post-likes">❤ <span th:text="${post.likeCount}">0</span></span>
+                    <span class="post-comments">💬 <span th:text="${post.commentCount}">0</span></span>
+                    <span class="post-time" th:text="${#temporals.format(post.createdAt, 'HH:mm')}">작성 시간</span>
+                </div>
+            </div>
+            <!-- 게시글이 없을 경우 표시할 메시지 -->
+            <div th:if="${#lists.isEmpty(postSummaries)}" class="no-posts">
+                <p>게시글이 없습니다.</p>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button id="prevButton" class="page-btn">&lt; 이전</button>
+            <button id="nextButton" class="page-btn">다음 &gt;</button>
+        </div>
+    </div>
+
+    <aside class="right">
+        <div class="favorites-container">
+            <h4 class="favorites-title">❤️ 즐겨찾기</h4>
+            <ul class="favorites-list">
+                <li class="favorite-item" th:each="fav : ${favorites}">
+                    <a th:href="@{/posts/{id}(id=${fav.id})}" th:text="'[' + ${fav.subjectName} + '] ' + ${fav.keywords}">즐겨찾기 항목</a>
+                </li>
+                <li class="no-favorites" th:if="${#lists.isEmpty(favorites)}">즐겨찾기한 게시글이 없습니다.</li>
+            </ul>
+        </div>
+    </aside>
+</main>
+
+<script th:src="@{/js/pagination.js}"></script>
+</body>
+</html>
