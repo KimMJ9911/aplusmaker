@@ -11,107 +11,9 @@ body {
   object-fit: cover;
 }
 
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #24388f;
-  font-weight: 500;
-}
+/* nav 관련 스타일 제거 - gnb.css에서 정의됨 */
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: linear-gradient(to bottom, #f2f6fc, #edf2f7);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.left_button a {
-  margin-right: 20px;
-  text-decoration: none;
-  color: #24388f;
-  font-weight: 500;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header-right span {
-  color: #24388f;
-  font-weight: 500;
-}
-
-/* 로그인 상태일 때 유저 환영 메시지 영역 */
-.user-welcome {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.welcome-message {
-  margin: 0;
-  color: #24388f;
-  font-weight: 600;
-}
-
-/* 비로그인 상태일 때 버튼 영역 */
-.auth-buttons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* 로그인/회원가입/로그아웃 버튼 공통 스타일 */
-.login-btn, .register-btn, .logout-btn {
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-weight: 500;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.2s ease;
-}
-
-/* 로그인 버튼 스타일 */
-.login-btn {
-  background-color: #0a4fb3;
-  color: white;
-  border: 1px solid #0a4fb3;
-}
-
-.login-btn:hover {
-  background-color: #083b87;
-}
-
-/* 회원가입 버튼 스타일 */
-.register-btn {
-  background-color: white;
-  color: #0a4fb3;
-  border: 1px solid #0a4fb3;
-}
-
-.register-btn:hover {
-  background-color: #f0f4fa;
-}
-
-/* 로그아웃 버튼 스타일 */
-.logout-btn {
-  background-color: #0a4fb3;
-  color: white;
-  border: 1px solid #0a4fb3;
-}
-
-.logout-btn:hover {
-  background-color: #083b87;
-}
+/* header 관련 스타일은 gnb.css에서 정의됨 */
 
 /* main */
 .main {
@@ -129,8 +31,10 @@ header {
   text-align: left;
 }
 
-h1 .highlight-red {
-  color: #f46a6a;
+.highlight-red {
+  color: #ff3b30; /* 빨간색 텍스트로 변경 */
+  border-bottom: none; /* 밑줄 제거 */
+  padding-bottom: 0;
 }
 
 .logo_wrapper {
@@ -151,8 +55,9 @@ h1 .highlight-red {
   -webkit-text-fill-color: transparent;
 }
 .maker {
-  color: black;
-  -webkit-text-fill-color: initial;
+  color: black !important;
+  -webkit-text-fill-color: initial !important;
+  font-weight: 800;
 }
 
 .start-button {
@@ -166,6 +71,23 @@ h1 .highlight-red {
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  text-decoration: none; /* 밑줄 제거 */
+  border-bottom: none; /* 밑줄 제거 확실히 */
+}
+
+/* 시작하기 버튼 관련 모든 밑줄 효과 제거 */
+.main a, 
+.main a:hover, 
+.main button,
+.main a button {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* 버튼 링크 전용 스타일 */
+.button-link {
+  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
 .reviews {
@@ -198,12 +120,22 @@ footer .logo-colored {
 }
 
 .footer_cotents {
-  color: #24388f;
-  line-height: 1;
-  padding-bottom: 5px;
-  font-size: 28px;
+  margin-bottom: 20px;
 }
-footer .highlight-red {
-  color: #f46a6a;
-  font-size: 1em;
+
+footer p {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.5;
+  max-width: 1200px; /* 800px에서 1200px로 증가 */
+  margin: 0 auto;
+  padding: 0 15px;
 }
+
+footer p span {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+

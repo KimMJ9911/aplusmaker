@@ -1,30 +1,13 @@
-/* 공통 초기화 */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
-/* 배경 및 텍스트 */
 body {
-  background-color: #f0f2f5;
+  background: #d2dde7;
   color: #333;
-}
-
-/* 헤더 영역 */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: linear-gradient(to bottom, #f9fbff, #e8eff5);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
 }
 
 .Image {
@@ -33,163 +16,188 @@ header {
   object-fit: cover;
 }
 
-.left_button a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #24388f;
-  font-weight: 500;
-}
+/* GNB 관련 스타일은 gnb.css에서 정의됨 */
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.welcome-message {
-  font-size: 16px;
-  color: #24388f;
-}
-
-/* 메인 레이아웃 */
 main {
   display: flex;
-  max-width: 1200px;
-  margin: 20px auto;
-  gap: 24px;
-  padding: 0 20px;
+  padding: 15px; /* 패딩 감소 */
+  max-width: 1400px; /* 최대 너비 증가 */
+  margin: 0 auto;
+  gap: 18px; /* 좌우 컴포넌트 간격 약간 감소 */
 }
 
 .left {
-  flex: 3;
+  flex: 4; /* 게시글 목록 공간 비율 유지 */
 }
 
 .right {
-  flex: 1;
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  height: fit-content;
+  flex: 1.8; /* 즐겨찾기 목록 공간 비율 1.5배 증가 */
 }
 
-.right h4 {
-  margin-bottom: 12px;
-  font-size: 18px;
-  color: #24388f;
-}
-
-.right ul {
-  list-style: none;
-  padding: 0;
-}
-
-.right ul li {
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  background-color: #f8f9fb;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #333;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-/* 검색창 + 버튼 */
 .search-box {
   display: flex;
-  gap: 10px;
+  width: 100%;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .search-box input {
   flex: 1;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 12px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 16px;
 }
 
-.search-box button {
-  padding: 12px 20px;
-  background-color: #24388f;
-  color: #fff;
+.search-btn {
+  padding: 10px 20px;
+  background: #24388f;
+  color: white;
   border: none;
-  border-radius: 25px;
-  font-weight: 500;
+  border-radius: 50px;
+  font-size: 14px;
   cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-.search-box button:hover {
-  background-color: #1b2c70;
+.write-btn {
+  padding: 10px 20px;
+  background: #28a745; /* 초록색 계열로 변경 */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-/* 게시글 목록 */
 .post-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* ✅ 게시글 카드 스타일 (카테고리 구분 포함) */
 .post-card {
-  padding: 18px 20px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  margin-bottom: 12px;
-  border-left: 6px solid #24388f;
+  background: white;
+  border-radius: 6px;
+  padding: 14px 16px; /* 상하 패딩 약간 감소, 좌우 패딩 증가 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.post-card h3 {
+.post-header {
+  margin-bottom: 10px;
+}
+
+.post-header h3 {
   font-size: 16px;
-  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.post-header h3 a {
+  text-decoration: none;
+  color: #333;
+}
+
+.post-header h3 a:hover {
   color: #24388f;
 }
 
-.post-card p {
-  color: #444;
+.post-content {
+  color: #555;
   font-size: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.4;
 }
 
 .post-meta {
   font-size: 12px;
-  color: #777;
+  color: gray;
   display: flex;
   gap: 15px;
+}
+
+.post-likes, .post-comments {
+  display: flex;
   align-items: center;
+  gap: 5px;
 }
 
-/* 과목별 구분선 (CSS만 사용한 시각적 보정) */
-.post-card:nth-child(n+2)::before {
-  content: '';
-  display: block;
-  margin-top: 24px;
-  border-top: 1px dashed #ccc;
+.post-time {
+  margin-left: auto;
 }
 
-.post-card:first-child::before {
-  display: none;
+.favorites-container {
+  background: white;
+  border-radius: 6px;
+  padding: 14px 16px; /* 상하 패딩 약간 감소, 좌우 패딩 증가 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* 페이지네이션 버튼 */
+.favorites-title {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.favorites-list {
+  list-style: none;
+}
+
+.favorite-item {
+  background: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.favorite-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+.favorite-item a:hover {
+  color: #24388f;
+}
+
+.no-favorites {
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
+}
+
+.no-results {
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 .pagination {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  justify-content: space-between;
 }
 
-.pagination button {
-  padding: 10px 24px;
-  background-color: #24388f;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
+.page-btn {
+  padding: 12px 3rem;
   font-size: 14px;
+  background: #24388f;
+  color: white;
+  border: none;
+  border-radius: 30px;
   cursor: pointer;
+  font-weight: 500;
 }
 
-.pagination button:hover {
-  background-color: #1b2c70;
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

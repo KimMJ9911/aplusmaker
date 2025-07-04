@@ -1,0 +1,180 @@
+/* GNB 공통 스타일 - home 페이지 기준 */
+header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px 40px !important;
+    background: linear-gradient(to bottom, #f2f6fc, #edf2f7) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+/* 헤더 좌측 영역 */
+.header-left {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.header-left img.Image,
+.header-left img.logo {
+    width: 88px !important;
+    height: 56px !important;
+    object-fit: cover !important;
+    margin-right: 20px !important;
+}
+
+/* 좌측 메뉴 버튼 영역 - 간격 통일 */
+.left_button {
+    display: flex !important;
+    gap: 25px !important; /* 메뉴 항목 간 일관된 간격 */
+}
+
+.left_button a {
+    text-decoration: none !important;
+    color: #24388f !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    padding: 5px 10px !important;
+    border-radius: 4px !important;
+    transition: background-color 0.3s !important;
+    margin-right: 0 !important; /* margin-right 제거하고 위의 gap 속성만 사용 */
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+.left_button a:hover {
+    background-color: rgba(10, 79, 179, 0.1) !important;
+    color: #0a4fb3 !important;
+}
+
+/* 헤더 우측 영역 */
+.header-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+
+.header-right span {
+    color: #24388f !important;
+    font-weight: 500 !important;
+}
+
+/* 로그인 상태일 때 유저 환영 메시지 영역 */
+.user-welcome {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+}
+
+.welcome-message {
+    margin: 0 !important;
+    color: #24388f !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+/* 비로그인 상태일 때 버튼 영역 */
+.auth-buttons {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+/* 로그인/회원가입/로그아웃 버튼 공통 스타일 */
+.login-btn, .register-btn, .logout-btn {
+    padding: 8px 16px !important;
+    border-radius: 4px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    transition: all 0.2s ease !important;
+    font-size: 14px !important;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+/* 로그인 버튼 스타일 */
+.login-btn {
+    background-color: #0a4fb3 !important;
+    color: white !important;
+    border: 1px solid #0a4fb3 !important;
+}
+
+.login-btn:hover {
+    background-color: #083b87 !important;
+}
+
+/* 회원가입 버튼 스타일 */
+.register-btn {
+    background-color: white !important;
+    color: #0a4fb3 !important;
+    border: 1px solid #0a4fb3 !important;
+}
+
+.register-btn:hover {
+    background-color: #f0f4fa !important;
+}
+
+/* 로그아웃 버튼 스타일 */
+.logout-btn {
+    background-color: #0a4fb3 !important;
+    color: white !important;
+    border: 1px solid #0a4fb3 !important;
+}
+
+.logout-btn:hover {
+    background-color: #083b87 !important;
+}
+
+/* 다른 헤더 스타일과의 호환성을 위한 재정의 */
+.main-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px 40px !important;
+    background: linear-gradient(to bottom, #f2f6fc, #edf2f7) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background-image: none !important;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+/* main-nav 클래스를 사용하는 페이지를 위한 스타일 재정의 */
+.main-nav {
+    margin-left: 20px !important;
+}
+
+.main-nav ul {
+    display: flex !important;
+    list-style: none !important;
+    gap: 25px !important; /* left_button과 동일한 간격 */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.main-nav .nav-button {
+    text-decoration: none !important;
+    color: #24388f !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    padding: 5px 10px !important;
+    border-radius: 4px !important;
+    transition: background-color 0.3s !important;
+    white-space: nowrap !important;
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+.main-nav .nav-button:hover {
+    background-color: rgba(10, 79, 179, 0.1) !important;
+    color: #0a4fb3 !important;
+}
+
+.user-actions {
+    display: none !important;
+}
+
+.logout-button {
+    display: none !important;
+} 

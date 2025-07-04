@@ -1,8 +1,13 @@
-body {
-  font-family: "Noto Sans KR", sans-serif;
-  background-color: #eef2f6;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  background: #d2dde7;
+  color: #333;
 }
 
 .Image {
@@ -11,185 +16,300 @@ body {
   object-fit: cover;
 }
 
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #24388f;
-  font-weight: 500;
-}
-.delete-comment {
-  margin-top: 5px;
-  padding: 2px 6px;
-  font-size: 12px;
-  background-color: #eeeeee08;
-  border: none;
-  cursor: pointer;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: linear-gradient(to bottom, #f2f6fc, #edf2f7);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-.welcome-message {
-  font-family: "DM Sans", Helvetica;
-  font-weight: 400;
-  color: #24388f;
-  font-size: 16px;
-}
-
-.left_button a {
-  margin-right: 20px;
-  text-decoration: none;
-  color: #24388f;
-  font-weight: 500;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header-right span {
-  color: #24388f;
-  font-weight: 500;
-}
-
-.welcome {
-  font-size: 14px;
-}
+/* GNB 관련 스타일은 gnb.css에서 정의됨 */
 
 .post-container {
-  display: flex;
-  justify-content: center;
-  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 15px;
+  margin-top: 60px; /* GNB 높이 고려 */
 }
 
 .post-card {
   background: white;
+  border-radius: 6px;
   padding: 20px;
-  border-radius: 10px;
-  width: 700px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .post-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.user-icon {
-  font-size: 30px;
-  margin-right: 10px;
+.post-header .user-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .username {
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 16px;
+  color: #24388f;
 }
 
 .post-date {
-  font-size: 12px;
-  color: gray;
+  font-size: 13px;
+  color: #666;
+  margin-top: 3px;
 }
 
 .post-content {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   line-height: 1.6;
+}
+
+.post-content h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #24388f;
+  margin-bottom: 15px;
+}
+
+.post-content p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.post-content hr {
+  margin: 20px 0;
+  border: 0;
+  height: 1px;
+  background-color: #eee;
 }
 
 .interactions {
   display: flex;
+  align-items: center;
   gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 14px;
   color: #555;
-  margin-bottom: 10px;
+}
+
+.interactions form {
+  display: flex;
   align-items: center;
+  flex: 1;
+}
+
+.comment-input-container {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 10px;
+  width: 100%;
 }
 
 .comment-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  flex: 1;
+  padding: 10px 12px;
   border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.interactions button {
+  padding: 8px 15px;
+  background-color: #24388f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.submit-button {
+  padding: 8px 15px;
+  background-color: #24388f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.comments-section {
+  margin-bottom: 20px;
+}
+
+.comments-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .comments {
-  background-color: #f1f5f9;
-  padding: 10px;
-  border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
 }
 
 .comment {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.comment:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #24388f;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #666;
+}
+
+.comment-content-view {
   margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.comment-edit-form {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.comment-edit-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.edit-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cancel-edit {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #f0f0f0 !important;
+  color: #333 !important;
+}
+
+.save-edit {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #24388f;
+  color: white;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-comment {
+  background-color: #f0f0f0 !important;
+  color: #333 !important;
+}
+
+.comment-actions button {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #24388f;
+  color: white;
+}
+
+.action-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .back-button {
-  margin-top: 15px;
   padding: 10px 20px;
-  background-color: #1e3a8a;
+  background-color: #24388f;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
 }
-
 
 .action-buttons {
   display: flex;
-  gap: 12px;              /* 버튼 사이 간격 */
-  margin-top: 16px;       /* 위쪽 여백 */
-  justify-content: flex-start;  /* 왼쪽 정렬 (원하시면 flex-end 로 우측정렬) */
+  gap: 10px;
 }
 
-.action-buttons .btn-delete,
-.action-buttons .btn-edit {
-  padding: 8px 16px;                /* 클릭 영역 확보 */
+.btn-edit, .btn-delete {
+  padding: 10px 20px;
+  border-radius: 50px;
   font-size: 14px;
-  border-radius: 6px;               /* 살짝 둥근 모서리 */
-  border: 1px solid #24388f;        /* 파란 테두리 */
-  background-color: #fff;           /* 백그라운드 흰색 */
-  color: #24388f;                   /* 파란 텍스트 */
+  border: none;
   cursor: pointer;
-  transition: background-color .2s, color .2s;
+  font-weight: 500;
 }
 
-.action-buttons .btn-delete:hover,
-.action-buttons .btn-edit:hover {
-  background-color: #24388f;  /* 호버 시 진한 파랑 배경 */
-  color: #fff;                /* 흰 텍스트 */
+.btn-edit {
+  background-color: #f0f0f0;
+  color: #333;
 }
 
-
-.action-buttons a button {
-  display: inline-block;
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
 }
-/*등록버튼 스타일*/
-button[type="submit"] {
-  padding: 8px 16px;                /* 클릭 영역 확보 */
+
+.no-comments {
+  text-align: center;
+  color: #888;
+  padding: 15px;
   font-size: 14px;
-  border-radius: 6px;               /* 살짝 둥근 모서리 */
-  border: 1px solid #24388f;        /* 파란 테두리 */
-  background-color: #24388f;        /* 진한 파란 배경 */
-  color: #fff;                      /* 흰 텍스트 */
-  cursor: pointer;
-  transition: background-color .2s, transform .1s;
-  /* 다른 버튼들과 통일감 주기 */
-}
-
-button[type="submit"]:hover {
-  background-color: #1b2c70;        /* 호버 시 더 진한 파랑 */
-}
-
-button[type="submit"]:active {
-  transform: translateY(1px);       /* 누를 때 살짝 눌린 느낌 */
 }

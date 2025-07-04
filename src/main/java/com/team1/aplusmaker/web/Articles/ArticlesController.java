@@ -122,6 +122,41 @@ public class ArticlesController {
 
         return "redirect:/posts/" + articleId;
     }
+
+    @PostMapping("/posts/{articleId}/comments/{commentId}/delete") // 댓글 삭제 처리
+    public String deleteComment(@PathVariable Long articleId,
+                                @PathVariable Long commentId,
+                                Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        Long userId = memberRepository.findIdByUsername(username);
+
+        Comments comment = commentsRepository.findById(commentId).orElse(null);
+        if (comment != null && comment.getUser().getId().equals(userId)) {
+            commentsRepository.deleteById(commentId);
+        }
+        return "redirect:/posts/" + articleId;
+    }
+
+    @PostMapping("/posts/{articleId}/comments/{commentId}/edit") // 댓글 수정 처리
+    public String editComment(@PathVariable Long articleId,
+                              @PathVariable Long commentId,
+                              @RequestParam String content,
+                              Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        Long userId = memberRepository.findIdByUsername(username);
+
+        Comments comment = commentsRepository.findById(commentId).orElse(null);
+        if (comment != null && comment.getUser().getId().equals(userId)) {
+            comment.setContent(content);
+            comment.setCreatedAt(LocalDateTime.now());
+            commentsRepository.save(comment);
+        }
+        return "redirect:/posts/" + articleId;
+    }
+
+
     @PostMapping("/posts/{articleId}/like") //좋아요
     public String toggleLike(@PathVariable Long articleId, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -166,27 +201,35 @@ public class ArticlesController {
             @RequestParam String keywords,
             @RequestParam String questionText,
             @RequestParam String answerText,
-            Authentication authentication) {
+            Authentication authentication,
+            Model model) {
 
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String username = userDetails.getUsername();
-        Long userId= memberRepository.findIdByUsername(username);
+        try {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            String username = userDetails.getUsername();
+            Long userId= memberRepository.findIdByUsername(username);
 
-        Member member = memberRepository.findById(userId).orElse(null);
-        if (member == null) return "redirect:/posts";
+            Member member = memberRepository.findById(userId).orElse(null);
+            if (member == null) return "redirect:/posts";
 
-        Articles article = new Articles();
-        article.setUser(member);
-        article.setSubjectName(subjectName);
-        article.setKeywords(keywords);
-        article.setQuestionText(questionText);
-        article.setAnswerText(answerText);
-        article.setCreatedAt(LocalDateTime.now());
+            Articles article = new Articles();
+            article.setUser(member);
+            article.setSubjectName(subjectName);
+            article.setKeywords(keywords);
+            article.setQuestionText(questionText);
+            article.setAnswerText(answerText);
+            article.setCreatedAt(LocalDateTime.now());
 
-        articlesRepository.save(article);
+            articlesRepository.save(article);
 
-        // 저장된 게시글의 ID로 상세 페이지로 리다이렉트
-        return "redirect:/posts/" + article.getId();
+            // 저장된 게시글의 ID로 상세 페이지로 리다이렉트
+            return "redirect:/posts/" + article.getId();
+        } catch (Exception e) {
+            // 오류 처리 - 폼으로 다시 돌아가기
+            model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다: " + e.getMessage());
+            model.addAttribute("editMode", false);
+            return "postRegister";
+        }
     }
 
     @PostMapping("/posts/{articleId}/delete") // 글 삭제 처리

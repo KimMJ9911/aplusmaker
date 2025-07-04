@@ -24,9 +24,9 @@ public class Articles {
     @Column(name="subject_name")
     private String subjectName;
     private String keywords;
-    @Column(name="question_text")
+    @Column(name="question_text",columnDefinition = "TEXT")
     private String questionText;
-    @Column(name="answer_text")
+    @Column(name="answer_text",columnDefinition = "TEXT")
     private String answerText;
     @Column(name="created_at")
     private LocalDateTime createdAt;

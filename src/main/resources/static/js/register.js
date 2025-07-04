@@ -89,4 +89,4 @@ document.addEventListener("DOMContentLoaded", () => {
       if (schoolAuthMessageEl) schoolAuthMessageEl.textContent = "학교 인증이 요청되었습니다."; // 임시
     });
   }
-});
+}); 

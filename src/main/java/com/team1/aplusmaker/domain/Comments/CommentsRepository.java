@@ -20,4 +20,7 @@ public interface CommentsRepository extends JpaRepository<Comments, Long> {
     void deleteByArticleId(@Param("articleId") Long articleId);
 
     List<Comments> findCommentsByArticleId(Long articlesId);
+    
+    // 사용자별 댓글 수 카운트
+    Long countByUser_Id(Long userId);
 }

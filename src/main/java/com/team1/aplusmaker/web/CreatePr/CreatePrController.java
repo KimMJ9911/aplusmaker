@@ -72,10 +72,8 @@ public class CreatePrController {
         Long userId= memberRepository.findIdByUsername(username);
 
         Member member = memberRepository.findById(userId).orElse(null);
-        //랜덤하게 문제 몇 개 뽑아오기 위한 페이지조건
-        Pageable pageable = PageRequest.of(0, count);
 
-        List<Problems> problems = problemsRepository.findRandomByQuestionTypeAndKeywords(type, keyword, pageable);
+        List<Problems> problems = problemsRepository.findRandomByQuestionTypeAndKeywords(type, keyword, count);
 
         ProblemRecordGroup group = new ProblemRecordGroup();
         group.setUser(member);
@@ -130,7 +128,8 @@ public class CreatePrController {
         model.addAttribute("memberId", userId);
         return "exam";
     }
-    @PostMapping("/exam/delete/{groupId}")
+    
+    @GetMapping("/exam/delete/{groupId}")
     public String deleteViewGroup(@PathVariable Long groupId, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String username = userDetails.getUsername();
@@ -148,7 +147,8 @@ public class CreatePrController {
 
         return "redirect:/exam";
     }
-    @PostMapping("/exam/to-post/{groupId}")
+    
+    @GetMapping("/exam/to-post/{groupId}")
     public String toPostFromGroup(@PathVariable Long groupId,
                                   Authentication authentication,
                                   Model model) {

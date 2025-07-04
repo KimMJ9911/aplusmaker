@@ -15,4 +15,8 @@ public interface ProblemRecordRepository extends JpaRepository<ProblemRecord, Lo
     List<ProblemRecord> findByGroupId(@Param("groupId") Long groupId);
 
     void deleteByGroupId(Long groupId);
+    
+    // 사용자별 문제 풀이 수 카운트
+    @Query("SELECT COUNT(pr) FROM ProblemRecord pr WHERE pr.group.user.id = :userId")
+    Long countByUserId(@Param("userId") Long userId);
 }

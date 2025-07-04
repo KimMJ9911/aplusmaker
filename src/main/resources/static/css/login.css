@@ -79,6 +79,16 @@ body {
   font-size: 14px;
 }
 
+.success-box {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #e0ffe0;
+  color: #006400;
+  border: 1px solid #006400;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
 .bottom-text {
   margin-top: 24px;
   font-size: 14px;
@@ -94,4 +104,4 @@ body {
 
 .signup-link:hover {
   text-decoration: underline;
-}
+} 

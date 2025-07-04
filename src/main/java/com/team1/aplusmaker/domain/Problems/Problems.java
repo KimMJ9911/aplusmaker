@@ -20,10 +20,10 @@ public class Problems {
     private String subject;
     private String keywords;
 
-    @Column(name="question_text")
+    @Column(name="question_text",columnDefinition ="TEXT")
     private String questionText;
 
-    @Column(name="answer_text")
+    @Column(name="answer_text",columnDefinition = "TEXT")
     private String answerText;
 
     @Column(name="question_type")

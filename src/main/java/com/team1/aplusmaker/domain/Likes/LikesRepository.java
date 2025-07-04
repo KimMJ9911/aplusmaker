@@ -16,4 +16,7 @@ public interface LikesRepository extends JpaRepository<Likes, Long> {
     @Modifying
     @Query("DELETE FROM Likes l WHERE l.article.id = :articleId")
     void deleteByArticleId(@Param("articleId") Long articleId);
+    
+    // 사용자별 찜한 게시글 수 카운트
+    Long countByUser_Id(Long userId);
 }

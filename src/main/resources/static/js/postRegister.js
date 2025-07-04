@@ -1,36 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const submitButton = document.querySelector(".submit");
+  const form = document.querySelector("form");
   const cancelButton = document.querySelector(".cancel");
 
-  submitButton.addEventListener("click", function () {
-    const subject = document.querySelectorAll(".input")[0].value;
-    const category = document.querySelectorAll(".input")[1].value;
-    const question = document.querySelectorAll(".textarea")[0].value;
-    const explanation = document.querySelectorAll(".textarea")[1].value;
+  // 폼 제출 전 유효성 검사
+  form.addEventListener("submit", function(event) {
+    // input 요소들 선택
+    const subjectName = document.getElementById("subjectName").value.trim();
+    const keywords = document.getElementById("keywords").value.trim();
+    const questionText = document.getElementById("questionText").value.trim();
+    const answerText = document.getElementById("answerText").value.trim();
 
-    if (!subject || !category || !question) {
+    // 유효성 검사
+    if (!subjectName || !keywords || !questionText || !answerText) {
+      event.preventDefault(); // 폼 제출 중단
       alert("모든 항목을 입력해주세요!");
-      return;
+      return false;
     }
-
-    const post = {
-      subject,
-      category,
-      question,
-      explanation,
-      likes: 0,
-      time: "방금 전",
-    };
-
-    const postList = JSON.parse(localStorage.getItem("postList") || "[]");
-    postList.unshift(post);
-    localStorage.setItem("postList", JSON.stringify(postList));
-
-    window.location.href = "../../../../../../../templates(5-12)/post_list/Post.html";
+    
+    // 유효성 검사 통과 시 폼 제출 허용 (기본 동작)
+    return true;
   });
 
-  // ✅ 취소 버튼 누르면 이전 페이지로 이동
-  cancelButton.addEventListener("click", function () {
-    window.history.back(); // ← 이전 페이지로 이동
+  // 취소 버튼 이벤트 처리
+  cancelButton.addEventListener("click", function() {
+    window.history.back();
   });
 });

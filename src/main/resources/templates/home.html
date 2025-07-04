@@ -1,25 +1,79 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A+ Maker</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" th:href="@{/css/gnb.css}" />
 </head>
 <body>
-<h2>Welcome Home!</h2>
+<header th:replace="~{fragments/gnb :: gnbFragment}"></header>
 
-<!-- /exam 으로 이동-->
-<a th:href="@{/exam}">
-    <button type="button">시험 페이지로 이동</button>
-</a>
+<section class="main">
+    <h1>
+        어떤 시험 문제가 나올지 궁금하다면?<br />
+        당신의 <span class="highlight-red">성적</span>을<br />
+        <span class="highlight-red">최상위</span>로 이끌어주는 AI,<br/>
+        <div class="logo-wrapper">
+            <span class="logo-colored">A+<strong class="maker">Maker</strong></span>
+        </div>
+    </h1>
+    <a th:href="@{/exam}">
+        <button class="start-button">바로 시작하기 &gt;</button>
+    </a>
+</section>
 
-<!-- /posts 로 이동 -->
-<a th:href="@{/posts}">
-    <button type="button">게시판으로 이동</button>
-</a>
+<section class="reviews">
+    <div class="review">
+        <p>
+            <strong>대학교 3학년 | 20세</strong><br />시험 준비할 때 예상문제를
+            준비할 수 있는 기반이 있어서 시험 준비하기 편리했어요 ㅠㅠ
+        </p>
+    </div>
+    <div class="review">
+        <p>
+            <strong>대학교 2학년 | 24세</strong><br />교수님 스타일의 패턴
+            문제라서 개인 기출도 참고할 수 있고, 예상 문제 준비하면서 뭔가 감이
+            오더라고요.
+        </p>
+    </div>
+    <div class="review">
+        <p>
+            <strong>대학교 1학년 | 22세</strong><br />진짜 이게 AI가 맞나 싶을
+            정도로 시험 전에 걱정이 줄었어요. 게다가 과제도 같이 봐줘서 시간
+            절약도 되고요.
+        </p>
+    </div>
+    <div class="review">
+        <p>
+            <strong>대학교 3학년 | 23세</strong><br />복잡한 개념도 예시와 함께
+            나와서 암기가 훨씬 쉽고 실제 시험에 반영되는 것도 많았어요.
+        </p>
+    </div>
+    <div class="review">
+        <p>
+            <strong>대학교 1학년 | 19세</strong><br />이걸로 공부하고 진짜 점수 잘
+            나왔어요. 학점 관리 진짜 스트레스였는데, 이젠 AI랑 함께 준비해서 A+
+            받았어요.
+        </p>
+    </div>
+</section>
 
-<!-- 로그아웃 버튼 -->
-<a th:href="@{/login}">
-    <button type="button">Logout</button>
-</a>
-
+<footer>
+    <div class="footer_cotents">
+        <strong>지금 바로 <span class="logo-colored">A+<strong class="maker">Maker</strong></span></strong><br />
+        <span class="logo-colored">A+<strong class="maker">Maker</strong></span>를 시작하세요!와 함께 당신의 학습 잠재력을 <span>A+</span>
+        성적으로 이끌어보세요.
+    </div>
+    <p>
+      <span>
+        <span class="logo-colored">A+<strong class="maker">Maker</strong></span>는 시험 유형을 파악하거나 실전 문제를 구하는 것에 막막함을 느끼는 대학생을 위한 AI 기반 예상 문제 추천 및 공유 플랫폼입니다.<br/>
+        전공/교양 과목 구분 없이 AI가 생성한 다양한 유형의 예상 문제를 제공하며, 사용자들이 직접 만든 문제를 공유하고 평가할 수도 있습니다.<br/>
+        개념 암기에 그치지 않고 문제 중심 학습을 통해 이해도를 높이고, 효율적으로 시험을 준비하여 최고의 결과를 만들 수 있도록 돕습니다.
+      </span>
+    </p>
+</footer>
+<script th:src="@{/js/home.js}"></script>
 </body>
 </html>

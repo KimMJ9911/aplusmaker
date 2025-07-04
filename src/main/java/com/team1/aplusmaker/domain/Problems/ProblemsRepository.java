@@ -11,11 +11,11 @@ import java.util.List;
 @Repository
 public interface ProblemsRepository extends JpaRepository<Problems, Long> {
     //커스텀 해줘야함
-    @Query("SELECT p FROM Problems p WHERE p.questionType = :type AND p.keywords LIKE %:keyword% ORDER BY function('RAND')")
+    @Query(value = "SELECT * FROM problems p WHERE p.question_type = :type AND p.keywords LIKE %:keyword% ORDER BY RAND() LIMIT :limit", nativeQuery = true)
     List<Problems> findRandomByQuestionTypeAndKeywords(
             @Param("type") int type,
             @Param("keyword") String keyword,
-            Pageable pageable
+            @Param("limit") int limit
     );
 
 
